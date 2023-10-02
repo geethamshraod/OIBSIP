@@ -1,0 +1,145 @@
+---------------------------<!--HTML FILE-->--------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA_Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Tribute | Adolf Hitler</title>
+    <link rel="stylesheet" href="stylet.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="content">
+            <section class="top">
+                <div class="img_container">
+                    <img src="Adolf-Hitler.png" alt="Adolf-Hitler">
+                </div>
+                <div>
+                    <h1>Adolf Hitler</h1>
+                    <h3>1888-1945</h3>
+                </div>
+            </section>
+            <section class="bottom">
+                <h2>Chancellor of the German Reich</h2>
+                <p><b>Adolf Hitler (1889-1945)</b> was a German politician
+                    and dictator who led the <b>National Socialist German
+                        Workers' Party (Nazi Party)</b>. He rose to power in the
+                    early 1930s, promoting fascist and anti-Semitic ideologies.
+                    Hitler's aggressive foreign policies triggered World War II.
+                    During his rule, he orchestrated the Holocaust, resulting
+                    in the genocide of six million Jews and millions of others.
+                    Hitler's regime was characterized by totalitarian control,
+                    propaganda, and indoctrination. He committed suicide in 1945,
+                    just before the fall of Nazi Germany. Hitler's actions and
+                    ideology remain a dark chapter in human history, symbolizing
+                    hate, prejudice, and the horrors of war.</p>
+            </section>
+            <section class="biography">
+                <h2>About Hitler’s rise to power</h2>
+                <ul>
+                    <li>Hitler’s success owed a great deal to the weakness of democracy in Germany</li>
+                    <li>It took the Great Depression to create the conditions in which Hitler could come to power</li>
+                    <li>Even in the final elections held after they came to power in March 1933</li>
+                    <li>Hitler became Chancellor .</li>
+                </ul>
+            </section>
+            <footer>
+                Read more about Hitler on <a href="https://en.wikipedia.org/wiki/Adolf_Hitler">Wikipedia</a>
+            </footer>
+        </div>
+    </div>
+</body>
+
+</html>
+
+---------------------------------------/*CSS FILE*/-------------------------------------------------------
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.container {
+    min-height: 100vh;
+    background-color: beige;
+    border: 10px solid black;
+}
+
+.content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.img_container {
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+
+.img_container,
+img {
+    height: 300px;
+    width: 400px;
+
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    align-items: center;
+}
+
+.top h1 {
+    font-size: 60px;
+    font-weight: bold;
+    color: black;
+    text-transform: uppercase;
+}
+
+.top h3 {
+    text-align: end;
+}
+
+.bottom {
+    margin-top: 50px;
+}
+
+.bottom h2 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.bottom p {
+    font-size: 20px;
+    line-height: 30px;
+    padding-bottom: 5px;
+    text-align: justify;
+}
+
+.biography h2 {
+    padding-bottom: 10px;
+}
+
+.biography {
+    margin-top: 30px;
+}
+
+.biography h2 {
+    margin-bottom: 10px;
+}
+
+.biography li {
+    margin-bottom: 5px;
+}
+
+footer {
+    margin: 50px 0;
+    text-align: right;
+}
+
