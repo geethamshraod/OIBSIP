@@ -1,0 +1,187 @@
+----------------------------------------<!--HTML FILE-->---------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA_Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do Webapp</title>
+    <link rel="stylesheet" href="stylel.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="todo-app">
+            <h2>To-do List</h2>
+            <div class="row">
+                <input type="text" id="input-box" placeholder="Add Text">
+                <button onclick="addTask()">Add</button>
+            </div>
+            <ul id="list-container">
+                <!-- <li class="checked">TASK1</li>
+                <li>TASK2</li>
+                <li>TASK3</li> -->
+            </ul>
+        </div>
+    </div>
+    <script src="scriptl.js"></script>
+</body>
+
+</html>
+
+----------------------------------------------/*CSS FILE*/-----------------------------------------------
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    background: blueviolet;
+    padding: 10px;
+}
+
+.todo-app {
+    width: 100%;
+    max-width: 540px;
+    background: #fff;
+    margin: 100px auto 20px;
+    padding: 40px 30px 70px;
+    border-radius: 10px;
+}
+
+.todo-app h2 {
+    color: navy;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgb(239, 239, 239);
+    border-radius: 30px;
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 10px;
+
+}
+
+button {
+    border: none;
+    outline: none;
+    padding: 15px 50px;
+    background: orangered;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 25px;
+    cursor: pointer;
+
+
+}
+
+ul li {
+    list-style: none;
+    padding: 6px 50px 6px 50px;
+    line-height: 30px;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+}
+
+ul li::before {
+    content: '';
+    position: absolute;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    top: 9px;
+    left: 8px;
+    background-image: url(./uncheck1.png);
+}
+
+ul li.checked {
+    color: #555;
+    text-decoration: line-through;
+}
+
+ul li.checked::before {
+    background-image: url(./checked.png);
+}
+
+ul li span {
+    position: absolute;
+    right: 0;
+    top: 5px;
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+    color: #555;
+    line-height: 40px;
+    text-align: center;
+
+}
+
+ul li span:hover {
+    background: #edeef0;
+    border-radius: 50%;
+}
+
+--------------------------------------------------------//JAVASCRIPT FILE--------------------------------------------
+const inputBox = document.getElementById('input-box');
+const listContainer = document.getElementById('list-container');
+
+function addTask() {
+    if (inputBox.value === '') {
+        alert("You must enter something");
+    }
+    else {
+        let li = document.createElement("li");
+        li.innerHTML = inputBox.value;
+        listContainer.appendChild(li);
+        let span = document.createElement("span");
+        span.innerHTML = "\u00d7";
+        li.appendChild(span);
+    }
+    inputBox.value = "";
+    savedata();
+}
+
+listContainer.addEventListener("click", function (e) {
+    if (e.target.tagName === "LI") {
+        e.target.classList.toggle("checked");
+        savedata();
+    }
+    else if (e.target.tagName === "SPAN") {
+        e.target.parentElement.remove();
+        savedata();
+    }
+}, false);
+
+function savedata() {
+    localStorage.setItem("data", listContainer.innerHTML);
+}
+function showlist() {
+    listContainer.innerHTML = localStorage.getItem("data");
+}
+showlist();
+
