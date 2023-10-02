@@ -1,0 +1,80 @@
+import tkinter as tk
+from tkinter import messagebox
+from PIL import ImageTk
+import hashlib
+
+# User credentials stored as (username, hashed_password) pairs
+user_credentials = {}
+
+
+
+def hash_password(password):
+    # Hash the password using SHA-256
+    hashed_password = hashlib.sha256(password.encode()).hexdigest()
+    return hashed_password
+
+
+
+def open_secured_page():
+    # Create a new window for the secured page
+    secured_window = tk.Toplevel(root)
+    secured_window.title("Secured Page")
+
+    secured_label = tk.Label(secured_window, text="Welcome to the Secured Page!\nThis is a protected area.\nOnly logged-in users can access this page.")
+    secured_label.pack(padx=20, pady=20)
+
+class Login:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Login System")
+        self.root.geometry("1199x600+100+50")
+        self.root.resizable(False, False)
+        
+        self.bg = ImageTk.PhotoImage(file="1.jpg")
+        self.bg_image = tk.Label(self.root, image=self.bg)
+        self.bg_image.place(x=0, y=0, relwidth=1, relheight=1)
+        
+        Frame_login = tk.Frame(self.root, bg="white")
+        Frame_login.place(x=330, y=150, width=500, height=400)
+
+        title = tk.Label(Frame_login, text="Login Here", font=("Impact", 35, "bold"), fg="black", bg="white")
+        title.place(x=90, y=30)
+        
+        subtitle = tk.Label(Frame_login, text="Members Login", font=("Goudy", 15, "bold"), fg="black", bg="white")
+        subtitle.place(x=90, y=100)
+        
+        user_lbl = tk.Label(Frame_login, text="Username", font=("Goudy old style", 15, "bold"), fg="black", bg="white")
+        user_lbl.place(x=90, y=140)
+        
+        self.username = tk.Entry(Frame_login, font=("Goudy", 15), bg="white")
+        self.username.place(x=90, y=170, width=320, height=35)
+        
+        pswd_lbl = tk.Label(Frame_login, text="Password", font=("Goudy old style", 15, "bold"), fg="black", bg="white")
+        pswd_lbl.place(x=90, y=210)
+        
+        self.password = tk.Entry(Frame_login, font=("Goudy", 15), bg="white", show="*")
+        self.password.place(x=90, y=240, width=320, height=35)
+        
+        forget = tk.Button(Frame_login, text="forgot password?", cursor="hand2", bd=0, font=("Goudy old style", 12), fg="blue", bg="white")
+        forget.place(x=90, y=280)
+        
+        submit = tk.Button(Frame_login, command=self.check_function, cursor="hand2", text="Submit", bd=0, font=("Goudy old style", 15), fg="white", bg="blue")
+        submit.place(x=90, y=320, width=180, height=40)
+        
+        entry_username = tk.Entry(root)
+        
+        entry_password = tk.Entry(root, show="*")
+        
+        
+    def check_function(self):
+        if self.username.get() == "" or self.password.get() == "":
+            messagebox.showerror("Error", "All fields should be filled", parent=self.root)
+        elif self.username.get() != "geethamsh" or self.password.get() != "hello@1234":
+            messagebox.showerror("Error", "Invalid username or password", parent=self.root)
+        else:
+            open_secured_page()
+
+# Main application window
+root = tk.Tk()
+obj = Login(root)
+root.mainloop()
